@@ -66,54 +66,72 @@ const Index = ({ quizData }) => {
                 >
                   <div className="card-inner">
                     <div className="card-front">
-                      <h6
-                        className="fw-bold mb-2 border-bottom pb-4"
-                        dangerouslySetInnerHTML={{ __html: item.question }}
-                      />
-                      <ul className="list-unstyled mb-0">
-                        {item.options.map((opt, i) => {
-                          const letter = String.fromCharCode(97 + i);
-                          let className = "option";
+                      <div className="card-content">
+                        <h6
+                          className="fw-bold mb-2 border-bottom pb-4"
+                          dangerouslySetInnerHTML={{ __html: item.question }}
+                        />
+                        <ul className="list-unstyled mb-0">
+                          {item.options.map((opt, i) => {
+                            const letter = String.fromCharCode(97 + i);
+                            let className = "option";
 
-                          if (isFlipped) {
-                            if (opt === item.answer) {
-                              className += " correct";
+                            if (isFlipped) {
+                              if (opt === item.answer) {
+                                className += " correct";
+                              } else if (selected === opt) {
+                                className += " incorrect";
+                              }
                             } else if (selected === opt) {
-                              className += " incorrect";
+                              className += " selected";
                             }
-                          } else if (selected === opt) {
-                            className += " selected";
-                          }
 
-                          return (
-                            <li
-                              key={i}
-                              className={className}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleSelectOption(index, opt);
-                              }}
-                              dangerouslySetInnerHTML={{
-                                __html: `${letter}. ${opt}`,
-                              }}
-                            ></li>
-                          );
-                        })}
-                      </ul>
-                      {!isFlipped && <span>Click to flip</span>}
+                            return (
+                              <li
+                                key={i}
+                                className={className}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleSelectOption(index, opt);
+                                }}
+                                dangerouslySetInnerHTML={{
+                                  __html: `${letter}. ${opt}`,
+                                }}
+                              ></li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                      {!isFlipped && (
+                        <div className="flip-footer">
+                          <i
+                            className="ri-repeat-line"
+                            style={{ marginRight: "6px" }}
+                          ></i>
+                          Click to flip
+                        </div>
+                      )}
                     </div>
 
                     <div className="card-back text-center">
-                      <h6 className="fw-bold">Answer</h6>
+                      {selected && <div className="flip-header">Answer</div>}
                       {selected ? (
                         isCorrect ? (
-                          <p className="text-success">
-                            Correct: {decodeHTML(item.answer)}
-                          </p>
+                          <>
+                            <p className="text-success">
+                              <i className="ri-checkbox-circle-line"></i>
+                            </p>
+                            <p className="text-success">
+                              Correct: {decodeHTML(item.answer)}
+                            </p>
+                          </>
                         ) : (
                           <>
                             <p className="text-danger">
-                              Correct: {decodeHTML(item.answer)}
+                              <i className="ri-close-circle-line"></i>
+                            </p>
+                            <p className="text-success">
+                              Correct answer: {decodeHTML(item.answer)}
                             </p>
                             <p>
                               Your answer:{" "}
@@ -124,7 +142,7 @@ const Index = ({ quizData }) => {
                       ) : (
                         <p>You didn't select an answer</p>
                       )}
-                      <small>(click to flip back)</small>
+                      {!selected && <small>(click to flip back)</small>}
                     </div>
                   </div>
                 </div>
@@ -139,6 +157,7 @@ const Index = ({ quizData }) => {
             You got {correctCount} out of {quizData.length} questions right.
           </h5>
           <button className="btn btn-secondary mt-3" onClick={handleReset}>
+            <i className="ri-restart-line me-1"></i>
             Restart Quiz
           </button>
         </div>

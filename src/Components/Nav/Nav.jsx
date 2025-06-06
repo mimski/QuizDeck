@@ -4,7 +4,7 @@ import * as bootstrap from "bootstrap";
 const Nav = ({ onGenerate }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [numberOfQuestions, setNumberOfQuestions] = useState(5);
+  const [numberOfQuestions, setNumberOfQuestions] = useState(4);
 
   useEffect(() => {
     fetch("https://opentdb.com/api_category.php")
@@ -38,12 +38,16 @@ const Nav = ({ onGenerate }) => {
     <>
       <div className="px-5 py-3 nav-wrap">
         <nav className="navbar navbar-expand-lg d-flex justify-content-between gap-3 px-5">
-          <h3 className="logo navbar-brand text-light">QuizDeck</h3>
+          <h3 className="logo navbar-brand text-light">
+            <i className="ri-brain-line me-2"></i>
+            QuizDeck
+          </h3>
           <button
             className="btn btn-dark"
             data-bs-toggle="modal"
             data-bs-target="#quizModal"
           >
+            <i className="ri-lightbulb-flash-line"></i>
             Get Quiz
           </button>
         </nav>
