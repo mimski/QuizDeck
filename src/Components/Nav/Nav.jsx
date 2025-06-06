@@ -14,11 +14,11 @@ const Nav = ({ onGenerate }) => {
 
   const handleGenerate = () => {
     const modalElement = document.getElementById("quizModal");
+    if (!modalElement) return;
     let modalInstance = bootstrap.Modal.getInstance(modalElement);
     if (!modalInstance) {
       modalInstance = new bootstrap.Modal(modalElement);
     }
-    modalInstance.hide();
 
     const backdrop = document.querySelector(".modal-backdrop");
     if (backdrop) {
@@ -31,6 +31,7 @@ const Nav = ({ onGenerate }) => {
     }`;
 
     onGenerate(url);
+    modalInstance.hide();
   };
 
   return (

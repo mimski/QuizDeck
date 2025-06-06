@@ -13,6 +13,10 @@ const useQuiz = () => {
         answer: q.correct_answer,
       }));
 
+      if (!Array.isArray(data.results) || data.results.length === 0) {
+        throw new Error("No quiz data returned. Try different settings.");
+      }
+
       setQuizData(formattedQuizData);
     } catch (error) {
       console.error("Failed to fetch Quiz data", error);

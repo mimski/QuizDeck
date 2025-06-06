@@ -1,5 +1,11 @@
 import { useState } from "react";
 
+const decodeHTML = (html) => {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+};
+
 const Index = ({ quizData }) => {
   const [flippedCards, setFlippedCards] = useState({});
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -100,20 +106,21 @@ const Index = ({ quizData }) => {
                     <div className="card-back text-center">
                       <h6 className="fw-bold">Answer</h6>
                       {selected ? (
-                        <>
-                          <p
-                            className={
-                              isCorrect ? "text-success" : "text-danger"
-                            }
-                          >
-                            Correct: {selected}
+                        isCorrect ? (
+                          <p className="text-success">
+                            Correct: {decodeHTML(item.answer)}
                           </p>
-                          {!isCorrect && (
-                            <p>
-                              Your answer: <strong>{item.answer}</strong>
+                        ) : (
+                          <>
+                            <p className="text-danger">
+                              Correct: {decodeHTML(item.answer)}
                             </p>
-                          )}
-                        </>
+                            <p>
+                              Your answer:{" "}
+                              <strong>{decodeHTML(selected)}</strong>
+                            </p>
+                          </>
+                        )
                       ) : (
                         <p>You didn't select an answer</p>
                       )}
