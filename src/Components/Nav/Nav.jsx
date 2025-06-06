@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useBootstrapBreakpoints } from "react-bootstrap/esm/ThemeProvider";
+import * as bootstrap from "bootstrap";
 
-function Nav({ onGenerate }) {
+const Nav = ({ onGenerate }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [numberOfQuestions, setNumberOfQuestions] = useState(5);
@@ -13,14 +13,24 @@ function Nav({ onGenerate }) {
   }, []);
 
   const handleGenerate = () => {
+    const modalElement = document.getElementById("quizModal");
+    let modalInstance = bootstrap.Modal.getInstance(modalElement);
+    if (!modalInstance) {
+      modalInstance = new bootstrap.Modal(modalElement);
+    }
+    modalInstance.hide();
+
+    const backdrop = document.querySelector(".modal-backdrop");
+    if (backdrop) {
+      backdrop.remove();
+    }
+    document.body.classList.remove("modal-open");
+
     const url = `https://opentdb.com/api.php?amount=${numberOfQuestions}${
       selectedCategory ? `&category=${selectedCategory}` : ""
     }`;
+
     onGenerate(url);
-    const modal = useBootstrapBreakpoints.Modal.getInstance(
-      document.getElementById("quizModal")
-    );
-    modal.hide();
   };
 
   return (
@@ -108,5 +118,6 @@ function Nav({ onGenerate }) {
       </div>
     </>
   );
-}
+};
+
 export default Nav;
