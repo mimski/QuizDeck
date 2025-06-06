@@ -4,6 +4,14 @@
 
 ---
 
+![QuizDeck Screenshot](https://github.com/user-attachments/assets/1c6312a2-3b7c-4510-a351-cd9172422007)
+
+![select Quiz Settings](https://github.com/user-attachments/assets/418c9c86-9cf4-411f-a0b9-00ce9eaa2815)
+
+![Answers](https://github.com/user-attachments/assets/fcc558d8-093b-4db6-bcc2-dc6c85890277)
+
+![QuizDeckGame](https://github.com/user-attachments/assets/9d23746b-ab58-4d19-bf52-d4a33ceb74a7)
+
 ## Installation & Usage
 
 ### 1. Clone the repository
