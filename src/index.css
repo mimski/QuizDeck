@@ -42,3 +42,108 @@ body {
   font-family: var(--OpenSans);
   padding: 10px 20px;
 }
+
+/* Quiz Card */
+
+.quiz-card {
+  perspective: 1000px;
+  cursor: pointer;
+  height: 280px;
+  position: relative;
+  display: flex;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition-slow) ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.quiz-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  justify-content: center;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  z-index: 1;
+  border-radius: 10px !important;
+}
+
+.card-front:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--black-color);
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.card-front::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(90deg, #fd9afd, #ff0195);
+  z-index: -1;
+  border-radius: 12px;
+  opacity: 0.5;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  padding: 1rem;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.card-front h6,
+.card-back h6 {
+  font-size: 1.2rem;
+}
+
+.card-back p {
+  font-size: 2rem;
+}
+
+.card-front ul li {
+  font-size: 2rem;
+}
+
+.card-front span {
+  background: linear-gradient(90deg, #e979e9, #de41a7);
+  padding: 5px 10px;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  border-radius: 5px;
+}
+
+.card-bac {
+  background: linear-gradient(90deg, #fd9afd, #ff0195);
+  color: var(--white-color);
+  transform: rotateY(180deg);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

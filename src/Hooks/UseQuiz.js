@@ -9,7 +9,8 @@ const useQuiz = () => {
       const data = await response.json();
       const formattedQuizData = data.results.map((q) => ({
         question: q.question,
-        options: shuffleArray([...q.incorrect_answer, q.correct_answer]),
+        options: shuffleArray([...q.incorrect_answers, q.correct_answer]),
+        answer: q.correct_answer,
       }));
 
       setQuizData(formattedQuizData);

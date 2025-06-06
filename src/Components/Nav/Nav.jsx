@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { useBootstrapBreakpoints } from "react-bootstrap/esm/ThemeProvider";
 
-function Nav() {
+function Nav({ onGenerate }) {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [numberOfQuestions, setNumberOfQuestions] = useState(5);
