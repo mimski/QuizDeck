@@ -1,10 +1,15 @@
 import "./App.css";
 import Nav from "./Components/Nav/Nav";
+import Index from "./Components/Pages/Index";
+import useQuiz from "./Hooks/UseQuiz";
 
 function App() {
+  const { quizData, fetchQuizData } = useQuiz();
+
   return (
     <>
-      <Nav />
+      <Nav onGenerate={fetchQuizData} />
+      <Index quizData={quizData} />
     </>
   );
 }
