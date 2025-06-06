@@ -1,12 +1,64 @@
-# React + Vite
+# QuizDeck
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**QuizDeck** is a modern flashcard-style quiz app built with React. It fetches trivia questions from the OpenTDB API and presents them as stylish interactive cards. Flip, select, and learn — the smarter way.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation & Usage
 
-## Expanding the ESLint configuration
+### 1. Clone the repository
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone https://github.com/mimski/QuizDeck.git
+cd QuizDeck
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the development server
+
+```bash
+npm run dev
+```
+
+Then open your browser at [http://localhost:5173](http://localhost:5173)
+
+---
+
+## How to Use
+
+1. Click **“Get Quiz”**.
+2. Choose a category and number of questions.
+3. Click **“Generate”**.
+4. Each card shows a question — pick an answer to flip it.
+5. Get instant feedback (correct/incorrect).
+6. At the bottom, you'll see your score and a restart option.
+
+Flashcard behavior:
+
+- You **cannot re-answer** once flipped.
+- Some cards will scroll if content overflows (auto-handled).
+- Responsive and mobile-friendly.
+
+---
+
+## Features
+
+- Flip-card style quiz with animations
+- Categories + question limits
+- Correct/incorrect UI feedback
+- Score tracker and restart
+
+---
+
+## Stack
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [OpenTDB API](https://opentdb.com)
+- [Bootstrap](https://getbootstrap.com)
+- [Remix Icons](https://remixicon.com/)
